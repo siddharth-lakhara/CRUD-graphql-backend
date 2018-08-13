@@ -1,5 +1,4 @@
 const Hapi = require('hapi');
-// const { apolloHapi, graphiqlHapi } = require('apollo-server');
 const { graphqlHapi, graphiqlHapi } = require('apollo-server-hapi');
 // const { fileLoader, mergeTypes, mergeResolvers } = require('merge-graphql-schemas');
 const { makeExecutableSchema } = require('graphql-tools');
@@ -8,7 +7,7 @@ const typeDefs = require('./schema/ping');
 const resolvers = require('./resolvers/ping');
 
 const schema = makeExecutableSchema({
-  typeDefs: [typeDefs],
+  typeDefs,
   resolvers,
 });
 
@@ -22,6 +21,7 @@ const registerGraphql = {
   options: {
     path: '/graphql',
     graphqlOptions: {
+      pretty: true,
       schema,
     },
     route: {
