@@ -1,10 +1,11 @@
 const Hapi = require('hapi');
 const { graphqlHapi, graphiqlHapi } = require('apollo-server-hapi');
-// const { fileLoader, mergeTypes, mergeResolvers } = require('merge-graphql-schemas');
+const { fileLoader, mergeTypes, mergeResolvers } = require('merge-graphql-schemas');
 const { makeExecutableSchema } = require('graphql-tools');
+const path = require('path');
 
-const typeDefs = require('./schema/ping');
-const resolvers = require('./resolvers/ping');
+const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
+const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './resolvers')));
 
 const schema = makeExecutableSchema({
   typeDefs,

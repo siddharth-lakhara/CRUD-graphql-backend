@@ -1,5 +1,5 @@
 
-const ping = [`
+const ping = `
   type Query {
     ping: String
   }
@@ -7,7 +7,7 @@ const ping = [`
   schema {
     query: Query
   }
-`];
+`;
 
 // module.exports = () => [ping];
 module.exports = ping;
