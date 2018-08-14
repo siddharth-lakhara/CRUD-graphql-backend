@@ -18,6 +18,7 @@ const users = `
 
   type Mutation {
     createUser(userName: String!, email: String!): RegistrationResponse!
+    updateUser(userName: String!, email: String!): RegistrationResponse!
   }
 `;
 
