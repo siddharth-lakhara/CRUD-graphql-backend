@@ -2,7 +2,7 @@
 const users = `
   type User {
     id: Int!
-    username: String!
+    userName: String!
     email: String!
   }
   

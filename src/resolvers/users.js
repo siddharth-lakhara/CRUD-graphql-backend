@@ -4,9 +4,9 @@ const users = {
   Query: {
     allUsers: async (_obj, _args, { models }) => {
       const searchResults = await models.users.findAll();
-      const filteredArray = searchResults.filter(elem => ({
+      const filteredArray = searchResults.map(elem => ({
         id: elem.id,
-        username: elem.username,
+        userName: elem.user_name,
         email: elem.email,
       }));
       return filteredArray;
