@@ -6,7 +6,7 @@ const users = `
     email: String!
   }
   
-  type RegistrationResponse {
+  type updateUserResponse {
     ok: Boolean!
     msg: String
     errors: [Error!]
@@ -17,8 +17,9 @@ const users = `
   }
 
   type Mutation {
-    createUser(userName: String!, email: String!): RegistrationResponse!
-    updateUser(userName: String!, email: String!): RegistrationResponse!
+    createUser(userName: String!, email: String!): updateUserResponse!
+    updateUser(userName: String!, email: String!): updateUserResponse!
+    deleteUser(userName: String!): updateUserResponse!
   }
 `;
 
