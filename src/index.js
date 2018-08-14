@@ -4,6 +4,8 @@ const { fileLoader, mergeTypes, mergeResolvers } = require('merge-graphql-schema
 const { makeExecutableSchema } = require('graphql-tools');
 const path = require('path');
 
+const models = require('../models');
+
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
 const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './resolvers')));
 
@@ -24,6 +26,9 @@ const registerGraphql = {
     graphqlOptions: {
       pretty: true,
       schema,
+      context: {
+        models,
+      },
     },
     route: {
       cors: true,
@@ -48,7 +53,6 @@ const start = async () => {
 
     await server.start();
   } catch (err) {
-    console.log('Catch err');
     console.log(err);
     process.exit(1);
   }

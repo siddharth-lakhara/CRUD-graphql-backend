@@ -7,11 +7,13 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    username: {
+    user_name: {
       type: Sequelize.STRING,
+      unique: true,
     },
     email: {
       type: Sequelize.STRING,
+      unique: true,
     },
     createdAt: {
       allowNull: false,
@@ -21,6 +23,9 @@ module.exports = {
       allowNull: false,
       type: Sequelize.DATE,
     },
+  }, {
+    underscored: true,
+    underscoredAll: true,
   }),
   down: (queryInterface, Sequelize) => queryInterface.dropTable('users'),
 };
